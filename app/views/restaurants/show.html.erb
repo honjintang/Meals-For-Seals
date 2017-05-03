@@ -1,2 +1,14 @@
 <p><%= @restaurant.name %></p>
 <p><%= @restaurant.description %></p>
+<table>
+  <tr>
+    <th>Thoughts</th>
+    <th>Rating</th>
+  </tr>
+  <tr>
+    <% @restaurant.reviews.each do |review| %>
+    <td><%= review.thoughts %></td>
+    <td><%= review.rating %></td>
+    <% end %>
+  </tr>
+</table>

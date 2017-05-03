@@ -38,7 +38,7 @@ feature 'restaurants' do
 
     scenario 'lets a user view a restaurant' do
       visit '/restaurants'
-      click_link 'Avocado in Paradise'
+      click_link 'Show Avocado in Paradise'
       expect(page).to have_content 'Avocado in Paradise'
       expect(current_path).to eq "/restaurants/#{avocado_in_paradise.id}"
     end
@@ -52,7 +52,7 @@ feature 'restaurants' do
       fill_in 'Name', with: "Avolicious"
       fill_in 'Description', with: "Only the perfectly ripe"
       click_button 'Update Restaurant'
-      click_link 'Avolicious'
+      click_link 'Show Avolicious'
       expect(page).to have_content "Avolicious"
       expect(page).to have_content "Only the perfectly ripe"
       expect(current_path).to eq '/restaurants/1'
@@ -68,5 +68,5 @@ feature 'restaurants' do
       expect(page).not_to have_content 'Avocado in Paradise'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
-  end  
+  end
 end

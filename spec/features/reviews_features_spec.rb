@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'reviewing' do
-  before { Restaurant.create name: 'Avocado in Paradise' }
+  before { Restaurant.create name: 'Avocado in Paradise'}
 
   scenario 'allows users to leave a review using a form' do
     visit '/restaurants'
@@ -11,6 +11,7 @@ feature 'reviewing' do
     click_button 'Leave Review'
 
     expect(current_path).to eq '/restaurants'
+    click_link 'All reviews'
     expect(page).to have_content 'AMAZIIIIIING'
   end
 end
