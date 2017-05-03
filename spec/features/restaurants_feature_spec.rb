@@ -74,10 +74,10 @@ feature 'restaurants' do
     scenario 'does not let you submit a name that is too short' do
       visit '/restaurants'
       click_link 'Add a restaurant'
-      fill_in 'Name', with: 'S'
+      fill_in 'Name', with: 'ky'
       click_button 'Create Restaurant'
-      expect(page).not_to have_content 'S'
+      expect(page).not_to have_content 'ky'
       expect(page).to have_content 'error'
     end
-  end 
+  end
 end
