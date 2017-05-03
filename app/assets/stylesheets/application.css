@@ -20,6 +20,10 @@ h1 {
   a {
     text-decoration: none
     }
+
+  a:hover {
+    color: pink;
+  }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
