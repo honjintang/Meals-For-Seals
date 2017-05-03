@@ -3,7 +3,9 @@
   <head>
     <title>Meals for Seals</title>
     <%= csrf_meta_tags %>
-
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+    </style>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -11,6 +13,7 @@
   <body>
     <h1>Meals for Seals</h1>
     <%= notice %>
+    <%= alert %>
     <%= yield %>
   </body>
 </html>
