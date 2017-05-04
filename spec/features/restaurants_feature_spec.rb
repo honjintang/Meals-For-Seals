@@ -5,7 +5,7 @@ feature 'restaurants' do
   before do
     visit '/'
     click_link 'Sign up'
-    fill_in 'Email', with: 'seal@seal.seal'
+    fill_in 'Email', with: 'seal@seal.com'
     fill_in 'Password', with: 'kissfromarose'
     fill_in 'Password confirmation', with: 'kissfromarose'
     click_button 'Sign up'
@@ -21,9 +21,7 @@ feature 'restaurants' do
   end
 
   context 'restaurants have been added' do
-    before do
-      Restaurant.create(name: 'Avocado in Paradise')
-    end
+    before { Restaurant.create name: 'Avocado in Paradise', description: 'Where avocados meet their makers', id: 1, user: User.new }
 
     scenario 'display restaurants' do
       visit '/restaurants'
@@ -35,7 +33,9 @@ feature 'restaurants' do
   context 'creating restaurants' do
 
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
+      visit '/restaurants'
       click_link 'Add a restaurant'
+      expect(current_path).to eq '/restaurants/new'
       fill_in 'Name', with: 'Avocado in Paradise'
       click_button 'Create Restaurant'
       expect(page).to have_content 'Avocado in Paradise'
@@ -44,38 +44,47 @@ feature 'restaurants' do
   end
 
   context 'viewing restaurants' do
-    let!(:avocado_in_paradise){ Restaurant.create(name:'Avocado in Paradise') }
-
+    before { Restaurant.create name: 'Avocado in Paradise', description: 'Where avocados meet their makers', id: 1, user: User.new }
     scenario 'lets a user view a restaurant' do
       visit '/restaurants'
       click_link 'Show Avocado in Paradise'
       expect(page).to have_content 'Avocado in Paradise'
-      expect(current_path).to eq "/restaurants/#{avocado_in_paradise.id}"
-    end
+      expect(current_path).to eq "/restaurants/1"
+      end
   end
 
   context 'editing restaurants' do
-    before { Restaurant.create name: 'Avocado in Paradise', description: 'Where avocados meet their makers', id: 1 }
+    # before { Restaurant.create name: 'Avocado in Paradise', description: 'Where avocados meet their makers', id: 1, user: User.new }
     scenario 'let a user edit a restaurant' do
+      visit '/'
+      click_link "Add a restaurant"
+      fill_in "Name", with: "Battenburg Legs"
+      fill_in "Description", with: "Cakey"
+      click_button 'Create Restaurant'
       visit '/restaurants'
-      click_link 'Edit Avocado in Paradise'
+      click_link 'Edit Battenburg Legs'
       fill_in 'Name', with: "Avolicious"
       fill_in 'Description', with: "Only the perfectly ripe"
       click_button 'Update Restaurant'
+      expect(current_path).to eq '/restaurants'
       click_link 'Show Avolicious'
       expect(page).to have_content "Avolicious"
       expect(page).to have_content "Only the perfectly ripe"
-      expect(current_path).to eq '/restaurants/1'
+      expect(page).not_to have_content 'Description'
     end
   end
 
   context 'deleting restaurants' do
-    before { Restaurant.create name: 'Avocado in Paradise', description: 'Where avocados meet their makers' }
+    # before { Restaurant.create name: 'Avocado in Paradise', description: 'Where avocados meet their makers', id: 1, user: User.new }
 
     scenario 'removes a restaurant when a user clicks a delete link' do
-      visit '/restaurants'
-      click_link 'Delete Avocado in Paradise'
-      expect(page).not_to have_content 'Avocado in Paradise'
+      visit '/'
+      click_link "Add a restaurant"
+      fill_in "Name", with: "Battenburg Legs"
+      fill_in "Description", with: "Cakey"
+      click_button 'Create Restaurant'
+      click_link 'Delete Battenburg Legs'
+      expect(page).not_to have_content 'Battenburg Legs'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
 
