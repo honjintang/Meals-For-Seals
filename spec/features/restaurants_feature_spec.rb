@@ -78,6 +78,23 @@ feature 'restaurants' do
       expect(page).not_to have_content 'Avocado in Paradise'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
+
+    scenario "user tries to delete someone else's restaurant" do
+      visit '/'
+      click_link "Add a restaurant"
+      fill_in "Name", with: "Battenburg Legs"
+      fill_in "Description", with: "Cakey"
+      click_button 'Create Restaurant'
+      click_link 'Sign out'
+      click_link 'Sign up'
+      fill_in 'Email', with: 'heidiklum@seal.com'
+      fill_in 'Password', with: 'ihateseal'
+      fill_in 'Password confirmation', with: 'ihateseal'
+      click_button 'Sign up'
+      click_link 'Delete Battenburg Legs'
+      expect(page).to have_content "You can only delete restaurants you've added yourself"
+
+    end
   end
 
   context 'an invalid restaurant' do
