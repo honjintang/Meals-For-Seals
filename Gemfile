@@ -14,6 +14,7 @@ end
 gem "devise", git: 'https://github.com/plataformatec/devise.git'
 
 gem 'dotenv'
+gem 'omniauth-facebook'
 
 gem 'spring-commands-rspec'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
