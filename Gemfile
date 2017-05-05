@@ -12,7 +12,10 @@ group :test do
   gem 'capybara'
   gem 'rspec-collection_matchers'
   gem 'shoulda'
+  gem 'shoulda-matchers', require: false
 end
+
+gem 'shoulda-matchers'
 
 gem "devise", git: 'https://github.com/plataformatec/devise.git'
 
