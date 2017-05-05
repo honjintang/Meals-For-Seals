@@ -72,6 +72,22 @@ feature 'restaurants' do
       expect(page).to have_content "Only the perfectly ripe"
       expect(page).not_to have_content 'Description'
     end
+
+    scenario 'user cant edit a restaurant that they havent added' do
+      visit '/'
+      click_link "Add a restaurant"
+      fill_in "Name", with: "Battenburg Legs"
+      fill_in "Description", with: "Cakey"
+      click_button 'Create Restaurant'
+      click_link 'Sign out'
+      click_link 'Sign up'
+      fill_in 'Email', with: 'heidiklum@seal.com'
+      fill_in 'Password', with: 'ihateseal'
+      fill_in 'Password confirmation', with: 'ihateseal'
+      click_button 'Sign up'
+      click_link "Edit Battenburg Legs"
+      expect(page).to have_content "You cannot edit restaurants that aren't yours"
+    end
   end
 
   context 'deleting restaurants' do

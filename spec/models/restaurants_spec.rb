@@ -13,4 +13,8 @@ describe Restaurant, type: :model do
     expect(restaurant).to have(1).error_on(:name)
   end
 
+  it 'should belong to User' do
+    should belong_to(:user)
+  end
+
 end
