@@ -2,14 +2,14 @@
 
 Week 8 project at Makers Academy - Making a Yelp clone with Rails.
 
+![Screenshot](http://imgur.com/a/zFTCa.png)
+
 ## Features
 
 * Users can sign up, sign in, and sign out.
 * Users can add restaurant reviews
 * Users can rate restaurants
 * Users can delete restaurants and reviews
-
-![Screenshot](http://imgur.com/a/zFTCa.png)
 
 ## How to run
 
