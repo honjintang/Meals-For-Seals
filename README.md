@@ -2,7 +2,7 @@
 
 Week 8 project at Makers Academy - Making a Yelp clone with Rails.
 
-![Screenshot](http://imgur.com/a/zFTCa.png)
+![Screenshot](http://imgur.com/AxvhTKx.png)
 
 ## Features
 
