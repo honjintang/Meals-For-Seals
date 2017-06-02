@@ -1,24 +1,23 @@
-# README
+# Meals for Seals
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Week 8 project at Makers Academy - Making a Yelp clone with Rails.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+* Users can sign up, sign in, and sign out.
+* Users can add restaurant reviews
+* Users can rate restaurants
+* Users can delete restaurants and reviews
 
-* System dependencies
+![Screenshot](http://imgur.com/a/zFTCa.png)
 
-* Configuration
+## How to run
 
-* Database creation
+```
+git clone git@github.com:honjintang/Meals-For-Seals.git
+cd Meals-For-Seals
+rake db:setup
+rails/bin s
+open http://localhost:3000/
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
